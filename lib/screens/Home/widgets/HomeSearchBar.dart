@@ -32,7 +32,17 @@ class _HomeSearchBarState extends State<HomeSearchBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xff131313),
+      decoration: BoxDecoration(
+        color: Color(0xff131313),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.7),
+            spreadRadius: 0,
+            blurRadius: 10,
+            offset: Offset(0, 2), // changes position of shadow
+          ),
+        ],
+      ),
       height: 100,
       child: Padding(
         padding: EdgeInsets.only(
