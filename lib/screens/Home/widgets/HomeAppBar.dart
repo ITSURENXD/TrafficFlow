@@ -11,6 +11,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       elevation: 0,
       backgroundColor: Color(0xff131313),
+      scrolledUnderElevation: 0.0,
       leading: Padding(
         padding:
             const EdgeInsets.only(left: 15.0), // Adjust the padding as needed

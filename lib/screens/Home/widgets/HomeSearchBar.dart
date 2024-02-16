@@ -43,58 +43,71 @@ class _HomeSearchBarState extends State<HomeSearchBar> {
           ),
         ],
       ),
-      height: 100,
+      height: 120,
       child: Padding(
         padding: EdgeInsets.only(
-          top: 20,
+          top: 10,
           right: 25,
-          bottom: 0,
           left: 25,
         ),
-        child: TextField(
-          controller: _controller,
-          decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 15.0),
-            prefixIcon: Icon(
-              FontAwesomeIcons.magnifyingGlass,
-              size: 14.0,
-              color: Colors.grey[600],
-            ),
-            suffixIcon: _controller.text.isNotEmpty
-                ? GestureDetector(
-                    onTap: () {
-                      _controller
-                          .clear(); // This also updates _searchText because of the listener
-                    },
-                    child: Icon(
-                      Icons.close,
-                      color: Colors.grey[600],
-                    ),
-                  )
-                : null,
-            hintText: "Wanna go somewhere?",
-            hintStyle: TextStyle(
-              color: Colors.grey.withOpacity(0.5),
-            ),
-            filled: true,
-            fillColor: Color(0xff313131),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Color(0xffC67C4E),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              "Welcome!",
+              style: TextStyle(
+                color: Colors.grey[600],
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
               ),
-              borderRadius: BorderRadius.circular(10.0),
             ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey[600]!),
-              borderRadius: BorderRadius.circular(10.0),
+            TextField(
+              controller: _controller,
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.symmetric(vertical: 15.0),
+                prefixIcon: Icon(
+                  FontAwesomeIcons.magnifyingGlass,
+                  size: 14.0,
+                  color: Colors.grey[600],
+                ),
+                suffixIcon: _controller.text.isNotEmpty
+                    ? GestureDetector(
+                        onTap: () {
+                          _controller
+                              .clear(); // This also updates _searchText because of the listener
+                        },
+                        child: Icon(
+                          Icons.close,
+                          color: Colors.grey[600],
+                        ),
+                      )
+                    : null,
+                hintText: "Wanna go somewhere?",
+                hintStyle: TextStyle(
+                  color: Colors.grey.withOpacity(0.5),
+                ),
+                filled: true,
+                fillColor: Color(0xff313131),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color(0xffC67C4E),
+                  ),
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey[600]!),
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+              ),
+              style: TextStyle(
+                color: Colors.white,
+              ),
+              onChanged: (text) {
+                // The state is already being updated by the controller's listener
+              },
             ),
-          ),
-          style: TextStyle(
-            color: Colors.white,
-          ),
-          onChanged: (text) {
-            // The state is already being updated by the controller's listener
-          },
+          ],
         ),
       ),
     );
