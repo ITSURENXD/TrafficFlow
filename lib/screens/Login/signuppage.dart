@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  Color textColor = Colors.blue; // Initial color of the text
-
+class SignupPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +13,9 @@ class _LoginPageState extends State<LoginPage> {
             colors: [
               Color(0xff131313),
               Color.fromARGB(255, 12, 12, 12),
-            ],
+              
+            ]
+            ,
           ),
         ),
         child: SingleChildScrollView(
@@ -34,12 +29,12 @@ class _LoginPageState extends State<LoginPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      "Login",
+                      "Sign Up",
                       style: TextStyle(color: Colors.white, fontSize: 40),
                     ),
                     SizedBox(height: 5), // Add some vertical spacing between the texts
                     Text(
-                      "Welcome Back",
+                      "Create an Account",
                       style: TextStyle(color: Colors.white, fontSize: 21),
                     ),
                   ],
@@ -57,6 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                         topLeft: Radius.circular(40),
                         topRight: Radius.circular(40),
                       ),
+                      
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(24),
@@ -78,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide(color: Colors.brown), // Brown border when focused
+                                borderSide: BorderSide(color: Colors.brown), // brown border when focused
                               ),
                               filled: true,
                               fillColor: Colors.grey[600],
@@ -105,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide(color: Colors.brown), // Brown border when focused
+                                borderSide: BorderSide(color: Colors.brown), // brown border when focused
                               ),
                               filled: true,
                               fillColor: Colors.grey[600],
@@ -118,19 +114,6 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                           SizedBox(height: 40,),
-                          GestureDetector(
-                            onTap: () {
-                              // Change text color to indicate tap
-                              setState(() {
-                                textColor = Colors.grey; // Change color to red
-                              });
-
-                              // Add your logic for "Forgot Your Password" action here
-                            
-                            },
-                            child: Text("Forgot Your password", style: TextStyle(color: Colors.black)), // Use textColor variable
-                          ),
-                          SizedBox(height: 20,),
                           Container(
                             height: 50,
                             margin: EdgeInsets.symmetric(horizontal: 40),
@@ -139,33 +122,29 @@ class _LoginPageState extends State<LoginPage> {
                               color: Color(0xff131313),
                             ),
                             child: Center(
-                              child: Text("Login", style: TextStyle(color: Colors.white,fontSize: 23)),
-                            ),
-                          ),
-                          SizedBox(height: 20,),
-                          Container(
-                            height: 50,
-                            margin: EdgeInsets.symmetric(horizontal: 40),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              color: Color.fromARGB(255, 51, 51, 51), // Change color according to your preference
-                            ),
-                            child: Center(
-                              child: Text("Sign Up", style: TextStyle(color: Colors.white,fontSize: 20)),
+                              child: Text("Sign Up", style: TextStyle(color: Colors.white,fontSize: 23)),
                             ),
                           ),
                           SizedBox(height: 20,),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Container(
-                                height: 50,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  color: Colors.black,
+                              Text(
+                                "Already have an account? ",
+                                style: TextStyle(color: Colors.grey[600]),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  // Navigate to the login page
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  "Login here",
+                                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                                 ),
-                              )
+                              ),
                             ],
-                          )
+                          ),
                         ],
                       ),
                     ),
