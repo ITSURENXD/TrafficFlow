@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:traffic_management/screens/Home/widgets/HomeCategory.dart';
 import 'package:traffic_management/screens/Home/widgets/HomeListItems.dart';
 import 'package:traffic_management/screens/Home/widgets/HomeSearchBar.dart';
 import '../../widgets/CustomBottomNavBar.dart';
@@ -27,6 +28,9 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: [
                   // Your scrollable content goes here
+                  // category section
+                  HomeCategory(),
+
                   HomeListItems(),
                   // Add more widgets that you want to scroll
                 ],
