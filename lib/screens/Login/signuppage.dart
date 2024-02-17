@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignupPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,10 +11,11 @@ class SignUpPage extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             colors: [
-              const Color.fromARGB(255, 122, 72, 54),
-              Color.fromARGB(255, 112, 84, 75),
-              Color.fromARGB(255, 145, 101, 87),
-            ],
+              Color(0xff131313),
+              Color.fromARGB(255, 12, 12, 12),
+              
+            ]
+            ,
           ),
         ),
         child: SingleChildScrollView(
@@ -25,10 +26,17 @@ class SignUpPage extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(20),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text("Sign Up", style: TextStyle(color: Colors.white, fontSize: 40)),
-                    SizedBox(height: 10,),
-                    Text("Create an Account", style: TextStyle(color: Colors.white, fontSize: 21))
+                    Text(
+                      "Sign Up",
+                      style: TextStyle(color: Colors.white, fontSize: 40),
+                    ),
+                    SizedBox(height: 5), // Add some vertical spacing between the texts
+                    Text(
+                      "Create an Account",
+                      style: TextStyle(color: Colors.white, fontSize: 21),
+                    ),
                   ],
                 ),
               ),
@@ -44,6 +52,7 @@ class SignUpPage extends StatelessWidget {
                         topLeft: Radius.circular(40),
                         topRight: Radius.circular(40),
                       ),
+                      
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(24),
@@ -51,40 +60,56 @@ class SignUpPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          TextField(
-                            style: TextStyle(color: Colors.black),
+                          TextFormField(
+                            style: TextStyle(color: Colors.white),
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide.none,
+                                borderSide: BorderSide(color: Colors.white), // White border
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                borderSide: BorderSide(color: Colors.white), // White border
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                borderSide: BorderSide(color: Colors.brown), // brown border when focused
                               ),
                               filled: true,
-                              fillColor: Colors.grey[250],
+                              fillColor: Colors.grey[600],
                               hintText: "E-mail",
-                              hintStyle: TextStyle(fontWeight: FontWeight.bold),
+                              hintStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
                               prefixIcon: Icon(
                                 Icons.email,
-                                color: Color.fromARGB(255, 134, 117, 111),
+                                color: Colors.white,
                               ),
                             ),
                           ),
                           SizedBox(height: 20,),
-                          TextField(
+                          TextFormField(
                             obscureText: true,
                             keyboardType: TextInputType.visiblePassword,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide.none,
+                                borderSide: BorderSide(color: Colors.white), // White border
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                borderSide: BorderSide(color: Colors.white), // White border
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                borderSide: BorderSide(color: Colors.brown), // brown border when focused
                               ),
                               filled: true,
-                              fillColor: Colors.grey[250],
+                              fillColor: Colors.grey[600],
                               hintText: "Password",
-                              hintStyle: TextStyle(fontWeight: FontWeight.bold),
+                              hintStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
                               prefixIcon: Icon(
                                 Icons.lock,
-                                color: Color.fromARGB(255, 134, 117, 111),
+                                color: Colors.white,
                               ),
                             ),
                           ),
@@ -94,24 +119,32 @@ class SignUpPage extends StatelessWidget {
                             margin: EdgeInsets.symmetric(horizontal: 40),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
-                              color: Colors.blue,
+                              color: Color(0xff131313),
                             ),
                             child: Center(
-                              child: Text("Sign Up", style: TextStyle(color: Colors.black)),
+                              child: Text("Sign Up", style: TextStyle(color: Colors.white,fontSize: 23)),
                             ),
                           ),
                           SizedBox(height: 20,),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Container(
-                                height: 50,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  color: Colors.black,
+                              Text(
+                                "Already have an account? ",
+                                style: TextStyle(color: Colors.grey[600]),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  // Navigate to the login page
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  "Login here",
+                                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                                 ),
-                              )
+                              ),
                             ],
-                          )
+                          ),
                         ],
                       ),
                     ),
