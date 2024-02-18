@@ -50,9 +50,10 @@ class _LoginPageDevState extends State<LoginPageDev> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.symmetric(vertical: 30),
+        padding: const EdgeInsets.symmetric(vertical: 30),
         width: double.infinity,
-        decoration: BoxDecoration(
+
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             colors: [
@@ -61,12 +62,15 @@ class _LoginPageDevState extends State<LoginPageDev> {
             ],
           ),
         ),
+
         child: ListView( //Changed from SingleChildScrollView due to overflow error
           children: <Widget>[
-            SizedBox(
+
+            const SizedBox(
               height: 80,
             ),
-            Padding(
+
+            const Padding(
               padding: EdgeInsets.all(20),
               child: Column(
                 children: <Widget>[
@@ -74,9 +78,11 @@ class _LoginPageDevState extends State<LoginPageDev> {
                     "Login",
                     style: TextStyle(color: Colors.white, fontSize: 40),
                   ),
+                  
                   SizedBox(
                     height: 10,
                   ),
+
                   Text(
                     "Welcome Back",
                     style: TextStyle(color: Colors.white, fontSize: 21),
@@ -84,17 +90,20 @@ class _LoginPageDevState extends State<LoginPageDev> {
                 ],
               ),
             ),
-            SizedBox(
+
+            const SizedBox(
               height: 20,
             ),
+
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(40),
                   topRight: Radius.circular(40),
                 ),
               ),
+
               child: Padding(
                 padding: const EdgeInsets.all(24),
                 child: Column(
@@ -106,25 +115,31 @@ class _LoginPageDevState extends State<LoginPageDev> {
                       textInputType: TextInputType.emailAddress,
                       textEditingController: _emailController,
                     ),
-                    SizedBox(
+                    
+                    const SizedBox(
                       height: 10,
                     ),
+
                     TextInputField(
                       hintText: "Password",
                       textInputType: TextInputType.visiblePassword,
                       textEditingController: _passwordController,
                       isPass: true,
                     ),
-                    SizedBox(
+                    
+                    const SizedBox(
                       height: 20,
                     ),
-                    Text(
+
+                    const Text(
                       "Forgot Your password",
                       style: TextStyle(color: Colors.blue),
                     ),
-                    SizedBox(
+
+                    const SizedBox(
                       height: 25,
                     ),
+
                     Container(
                       height: 40,
                       margin: EdgeInsets.symmetric(horizontal: 40),
@@ -132,7 +147,8 @@ class _LoginPageDevState extends State<LoginPageDev> {
                         borderRadius: BorderRadius.circular(50),
                         color: Colors.blue,
                       ),
-                      child: Center(
+
+                      child: const Center(
                         child: Text(
                           "Login",
                           style: TextStyle(
@@ -141,9 +157,11 @@ class _LoginPageDevState extends State<LoginPageDev> {
                         ),
                       ),
                     ),
-                    SizedBox(
+
+                    const SizedBox(
                       height: 40,
                     ),
+
                     Row(
                       children: <Widget>[
                         Container(
