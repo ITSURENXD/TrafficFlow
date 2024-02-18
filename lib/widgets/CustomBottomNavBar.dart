@@ -5,10 +5,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class CustomBottomNavBar extends StatelessWidget {
   final double iconSize; //icon size
   final Color color; //icon color, text color,
+  final Color gTextColor;
 
   const CustomBottomNavBar({
     this.iconSize = 18.0,
     this.color = const Color(0xffC67C4E),
+    this.gTextColor = Colors.grey,
   });
 
   @override
@@ -36,28 +38,32 @@ class CustomBottomNavBar extends StatelessWidget {
             gap: 8,
             iconSize: iconSize,
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-            tabBackgroundColor: Colors.grey[100]!,
+            tabBackgroundColor: Color(0xff313131),
             color: Colors.grey[600],
             tabs: [
               GButton(
                 icon: FontAwesomeIcons.house,
                 text: "Home",
                 iconActiveColor: color,
+                textColor: gTextColor,
               ),
               GButton(
                 icon: FontAwesomeIcons.message,
                 text: "Queries",
                 iconActiveColor: color,
+                textColor: gTextColor,
               ),
               GButton(
                 icon: FontAwesomeIcons.userAstronaut,
                 text: "Profile",
                 iconActiveColor: color,
+                textColor: gTextColor,
               ),
               GButton(
                 icon: FontAwesomeIcons.gear,
                 text: "Settings",
                 iconActiveColor: color,
+                textColor: gTextColor,
               ),
             ],
           ),

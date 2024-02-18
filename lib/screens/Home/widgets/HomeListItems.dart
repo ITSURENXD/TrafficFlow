@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:traffic_management/screens/Home/widgets/RouteBox.dart';
 
 class HomeListItems extends StatelessWidget {
   const HomeListItems({Key? key}) : super(key: key);
@@ -7,17 +8,10 @@ class HomeListItems extends StatelessWidget {
   Widget build(BuildContext context) {
     // Define a list of items (Widgets) you want to display
     List<Widget> items = List.generate(
-      10, // Number of items you want to generate
+      4, // Number of items you want to generate
       (index) => Padding(
         padding: const EdgeInsets.all(8.0), // Adjust padding as needed
-        child: Container(
-          height: 200, // Specify a height
-          width: 150, // and a width for each container
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            color: Colors.grey,
-          ),
-        ),
+        child: RouteBox(),
       ),
     );
 
