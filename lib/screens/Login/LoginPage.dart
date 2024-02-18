@@ -1,12 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:traffic_management/screens/Login/widgets/TextInputField.dart';
 
-class LoginPage extends StatefulWidget {
+// NOTES:
+// CHeck Line 63 for OverFlow by Pixel Problem
+// Convert to StatefulWidget
+class LoginPageDev extends StatefulWidget {
+  const LoginPageDev({Key? key}) : super(key: key);
+
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _LoginPageDevState createState() => _LoginPageDevState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  Color textColor = Colors.blue; // Initial color of the text
+class _LoginPageDevState extends State<LoginPageDev> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  //Debug Purposes only
+  String _emailprints = "";
+  String _passprints = "";
+
+  @override
+  void initState() {
+    super.initState();
+    _emailController.addListener(_updateEmailPrints);
+    _passwordController.addListener(_updatePasswordPrints);
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  void _updateEmailPrints() {
+    setState(() {
+      _emailprints = _emailController.text;
+      print(_emailprints);
+    });
+  }
+
+  void _updatePasswordPrints() {
+    setState(() {
+      _passprints = _passwordController.text;
+      print(_passprints);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,157 +61,105 @@ class _LoginPageState extends State<LoginPage> {
             ],
           ),
         ),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              SizedBox(height: 80,),
-              Padding(
-                padding: EdgeInsets.all(20),
+        child: ListView( //Changed from SingleChildScrollView due to overflow error
+          children: <Widget>[
+            SizedBox(
+              height: 80,
+            ),
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    "Login",
+                    style: TextStyle(color: Colors.white, fontSize: 40),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "Welcome Back",
+                    style: TextStyle(color: Colors.white, fontSize: 21),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(40),
+                  topRight: Radius.circular(40),
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(24),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      "Login",
-                      style: TextStyle(color: Colors.white, fontSize: 40),
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    TextInputField(
+                      hintText: "E-mail",
+                      textInputType: TextInputType.emailAddress,
+                      textEditingController: _emailController,
                     ),
-                    SizedBox(height: 5), // Add some vertical spacing between the texts
-                    Text(
-                      "Welcome Back",
-                      style: TextStyle(color: Colors.white, fontSize: 21),
+                    SizedBox(
+                      height: 10,
                     ),
+                    TextInputField(
+                      hintText: "Password",
+                      textInputType: TextInputType.visiblePassword,
+                      textEditingController: _passwordController,
+                      isPass: true,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      "Forgot Your password",
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    Container(
+                      height: 40,
+                      margin: EdgeInsets.symmetric(horizontal: 40),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: Colors.blue,
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Login",
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 0, 0, 0),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          height: 40,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Colors.black,
+                          ),
+                        )
+                      ],
+                    )
                   ],
                 ),
               ),
-              SizedBox(height: 20,),
-              Container(
-                height: MediaQuery.of(context).size.height - 230, // Adjust this height as needed
-                child: Expanded(
-                  child: Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(40),
-                        topRight: Radius.circular(40),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(24),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          TextFormField(
-                            style: TextStyle(color: Colors.white),
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide(color: Colors.white), // White border
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide(color: Colors.white), // White border
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide(color: Colors.brown), // Brown border when focused
-                              ),
-                              filled: true,
-                              fillColor: Colors.grey[600],
-                              hintText: "E-mail",
-                              hintStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-                              prefixIcon: Icon(
-                                Icons.email,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 20,),
-                          TextFormField(
-                            obscureText: true,
-                            keyboardType: TextInputType.visiblePassword,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide(color: Colors.white), // White border
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide(color: Colors.white), // White border
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide(color: Colors.brown), // Brown border when focused
-                              ),
-                              filled: true,
-                              fillColor: Colors.grey[600],
-                              hintText: "Password",
-                              hintStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-                              prefixIcon: Icon(
-                                Icons.lock,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 40,),
-                          GestureDetector(
-                            onTap: () {
-                              // Change text color to indicate tap
-                              setState(() {
-                                textColor = Colors.grey; // Change color to red
-                              });
-
-                              // Add your logic for "Forgot Your Password" action here
-                            
-                            },
-                            child: Text("Forgot Your password", style: TextStyle(color: Colors.black)), // Use textColor variable
-                          ),
-                          SizedBox(height: 20,),
-                          Container(
-                            height: 50,
-                            margin: EdgeInsets.symmetric(horizontal: 40),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              color: Color(0xff131313),
-                            ),
-                            child: Center(
-                              child: Text("Login", style: TextStyle(color: Colors.white,fontSize: 23)),
-                            ),
-                          ),
-                          SizedBox(height: 20,),
-                          Container(
-                            height: 50,
-                            margin: EdgeInsets.symmetric(horizontal: 40),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              color: Color.fromARGB(255, 51, 51, 51), // Change color according to your preference
-                            ),
-                            child: Center(
-                              child: Text("Sign Up", style: TextStyle(color: Colors.white,fontSize: 20)),
-                            ),
-                          ),
-                          SizedBox(height: 20,),
-                          Row(
-                            children: <Widget>[
-                              Container(
-                                height: 50,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  color: Colors.black,
-                                ),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

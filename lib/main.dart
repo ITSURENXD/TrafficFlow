@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:traffic_management/screens/Login/LoginPage.dart';
-import 'package:traffic_management/screens/Login/signuppage.dart';
-import 'screens/Home/HomePage.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -27,7 +25,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
       ),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: LoginPageDev(),
     );
   }
 }
