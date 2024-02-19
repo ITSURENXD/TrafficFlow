@@ -1,35 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:trafficflowdev/screens/Home/HomePage.dart';
-import 'package:trafficflowdev/screens/Login/SignUpPage.dart';
-import 'package:trafficflowdev/screens/Login/widgets/TextInputField.dart';
 import 'package:trafficflowdev/resources/auth_methods.dart';
+import 'package:trafficflowdev/screens/Home/HomePage.dart';
+import 'package:trafficflowdev/screens/Login/LoginPageDev.dart';
+import 'package:trafficflowdev/screens/Login/widgets/TextInputField.dart';
 import 'package:trafficflowdev/utils/utils.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({Key? key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
   bool _isLoading = false;
   String _emailprints = "";
   String _passprints = "";
+  String _usernameprints = "";
 
   @override
   void initState() {
     super.initState();
     _emailController.addListener(_updateEmailPrints);
     _passwordController.addListener(_updatePasswordPrints);
+    _usernameController.addListener(_updateUsernamePrints);
   }
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _usernameController.dispose();
     super.dispose();
   }
 
@@ -47,26 +51,38 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
-  void loginUser() async {
+  void _updateUsernamePrints() {
+    setState(() {
+      _usernameprints = _usernameController.text;
+      print(_usernameprints);
+    });
+  }
+
+  void signUpUser() async {
     setState(() {
       _isLoading = true;
     });
-    String res = await AuthMethods().loginUser(
-        email: _emailController.text, password: _passwordController.text);
+    String res = await AuthMethods().SignUpUser(
+      email: _emailController.text,
+      password: _passwordController.text,
+      username: _usernameController.text,
+    );
 
-    if (res == "success") {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomePage(),));
-    } else {
+    if (res != "success") {
       showSnackBar(res, context);
+    } else {
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => const HomePage(),
+      ));
     }
     setState(() {
       _isLoading = false;
     });
   }
 
-  void navigatetoSignUp() {
+  void navigatetoLogin() {
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => SignUpPage(),
+      builder: (context) => const LoginPageDev(),
     ));
   }
 
@@ -100,14 +116,14 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      "Login",
+                      "Sign Up",
                       style: TextStyle(color: Colors.white, fontSize: 40),
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     Text(
-                      "Welcome Back",
+                      "Create an Account",
                       style: TextStyle(color: Colors.white, fontSize: 21),
                     )
                   ],
@@ -131,6 +147,14 @@ class _LoginPageState extends State<LoginPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       TextInputField(
+                        hintText: "Username",
+                        textInputType: TextInputType.text,
+                        textEditingController: _usernameController,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      TextInputField(
                         hintText: "E-mail",
                         textInputType: TextInputType.emailAddress,
                         textEditingController: _emailController,
@@ -145,37 +169,27 @@ class _LoginPageState extends State<LoginPage> {
                         isPass: true,
                       ),
                       const SizedBox(
-                        height: 20,
-                      ),
-                      const Text(
-                        "Forgot Your password",
-                        style: TextStyle(color: Colors.blue),
-                      ),
-                      const SizedBox(
                         height: 25,
                       ),
                       InkWell(
-                        onTap: loginUser,
+                        onTap: signUpUser,
                         child: Container(
                           height: 40,
-                          margin: const EdgeInsets.symmetric(horizontal: 40),
+                          margin: EdgeInsets.symmetric(horizontal: 40),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
                             color: Colors.blue,
                           ),
-                          child: _isLoading
-                              ? const Center(
-                                  child: CircularProgressIndicator(
-                                      color: Color.fromARGB(255, 255, 255, 255)),
-                                )
-                              : const Center(
-                                  child: Text(
-                                    "Login",
-                                    style: TextStyle(
-                                      color: Color.fromARGB(255, 0, 0, 0),
-                                    ),
-                                  ),
-                                ),
+                          child: _isLoading ? const Center(child: CircularProgressIndicator(
+                            color: Color.fromARGB(255, 255, 255, 255),
+                          )) : const Center(
+                            child: Text(
+                              "Sign In",
+                              style: TextStyle(
+                                color: const Color.fromARGB(255, 0, 0, 0),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                       const SizedBox(
@@ -188,22 +202,22 @@ class _LoginPageState extends State<LoginPage> {
                             padding: const EdgeInsets.symmetric(
                               vertical: 8,
                             ),
-                            child: const Text("Don't have an account? "),
+                            child: const Text("Already have an Account? "),
                           ),
                           GestureDetector(
-                            onTap: navigatetoSignUp,
+                            onTap: navigatetoLogin,
                             child: Container(
                               padding: const EdgeInsets.symmetric(
                                 vertical: 8,
                               ),
                               child: const Text(
-                                "Sign Up",
+                                "Login",
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
-                            )
-                          )
+                            ),
+                          ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ),

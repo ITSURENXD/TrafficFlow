@@ -22,7 +22,7 @@ class TextInputField extends StatelessWidget {
 
     return TextField(
       controller: textEditingController,
-      style: TextStyle(color: Colors.black),
+      style: const TextStyle(color: Colors.black),
       keyboardType: textInputType,
       obscureText: isPass,
       decoration: InputDecoration(
@@ -33,9 +33,9 @@ class TextInputField extends StatelessWidget {
         
         filled: true,
         fillColor: Colors.grey[250],
-        hintStyle: TextStyle(fontWeight: FontWeight.bold),
+        hintStyle: const TextStyle(fontWeight: FontWeight.bold),
 
-        prefixIcon: Icon(
+        prefixIcon: const Icon(
           Icons.email,
           color:Color.fromARGB(255, 134, 117, 111),
         )

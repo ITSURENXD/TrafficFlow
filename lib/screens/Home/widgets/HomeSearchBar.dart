@@ -33,19 +33,19 @@ class _HomeSearchBarState extends State<HomeSearchBar> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xff131313),
+        color: const Color(0xff131313),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.7),
             spreadRadius: 0,
             blurRadius: 10,
-            offset: Offset(0, 2), // changes position of shadow
+            offset: const Offset(0, 2), // changes position of shadow
           ),
         ],
       ),
       height: 120,
       child: Padding(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
           top: 10,
           right: 25,
           left: 25,
@@ -88,9 +88,9 @@ class _HomeSearchBarState extends State<HomeSearchBar> {
                   color: Colors.grey.withOpacity(0.5),
                 ),
                 filled: true,
-                fillColor: Color(0xff313131),
+                fillColor: const Color(0xff313131),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Color(0xffC67C4E),
                   ),
                   borderRadius: BorderRadius.circular(10.0),
@@ -100,7 +100,7 @@ class _HomeSearchBarState extends State<HomeSearchBar> {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
               ),
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
               ),
               onChanged: (text) {
