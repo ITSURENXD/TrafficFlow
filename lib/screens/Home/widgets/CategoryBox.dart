@@ -31,8 +31,8 @@ class _CategoryBoxState extends State<CategoryBox> {
             accountEmail: Text("sandipgyawali10@gmail.com"),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
-                child: Image.network(
-                  "https://i.pinimg.com/564x/01/69/79/01697950bfa6134063e42bfc9cfba720.jpg",
+                child: Image.asset(
+                  "lib/images/profile.jpg",
                   width: 90,
                   height: 90,
                   fit: BoxFit.cover,
@@ -41,9 +41,7 @@ class _CategoryBoxState extends State<CategoryBox> {
             ),
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage(
-                  "https://i.pinimg.com/564x/03/11/51/031151d7883d2a893bb22f53e4a5eb15.jpg",
-                ),
+                image: AssetImage("lib/images/sidebarback.jpg"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -63,8 +61,8 @@ class _CategoryBoxState extends State<CategoryBox> {
                   onTap: () => print("Bookmarks tapped"),
                 ),
                 _buildDrawerItem(
-                  icon: FontAwesomeIcons.solidCalendarAlt,
-                  text: "Calendar",
+                  icon: FontAwesomeIcons.squareParking,
+                  text: "Parking",
                   onTap: () => print("Calendar tapped"),
                 ),
                 Divider(color: Colors.grey[800]),

@@ -10,7 +10,12 @@ class HomeListItems extends StatelessWidget {
     List<Widget> items = List.generate(
       4, // Number of items you want to generate
       (index) => Padding(
-        padding: const EdgeInsets.all(8.0), // Adjust padding as needed
+        padding: const EdgeInsets.fromLTRB(
+          8.0,
+          15.0,
+          8.0,
+          10.0,
+        ), // Adjust padding as needed
         child: RouteBox(),
       ),
     );
