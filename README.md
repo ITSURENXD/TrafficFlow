@@ -40,7 +40,7 @@ Encountering problems? Check out our [FAQs](#) or contact our support team at su
 
 ## License
 
-TrafficFlow is made available under the [MIT License](LICENSE.md).
+TrafficFlow is made available under the [MIT License](LICENSE).
 
 ## Acknowledgments
 
